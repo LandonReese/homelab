@@ -1,12 +1,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infrastructure
+  name: csgo-hub-apps
   namespace: flux-system
 spec:
-  interval: 10m0s
-  path: ./infrastructure
+  interval: 5m0s
+  path: ./deploy/k8s
   prune: true
+  wait: true
+  timeout: 3m0s
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: csgo-hub
